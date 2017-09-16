@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.flixter.flixter.R;
 import com.flixter.flixter.models.Movie;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,8 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         //populate data
         tvTitle.setText(movie.getOriginalTitle());
         tvOverview.setText(movie.getOverview());
+
+        Picasso.with(getContext()).load(movie.getPosterPath()).into(ivImage);
 
         //return view
         return convertView;
