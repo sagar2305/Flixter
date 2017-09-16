@@ -69,14 +69,19 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         viewHolder.overview.setText(movie.getOverview());
 
         String path;
+        int placeHolderId;
         int orientation = getContext().getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             path = movie.getPosterPath();
+            placeHolderId = R.drawable.placeholder_portrait;
         } else {
             path = movie.getBackdropPath();
+            placeHolderId = R.drawable.placeholder;
         }
 
-        Picasso.with(getContext()).load(path).into(viewHolder.image);
+        Picasso.with(getContext()).load(path)
+                .placeholder(placeHolderId)
+                .into(viewHolder.image);
 
         //return view
         return convertView;
