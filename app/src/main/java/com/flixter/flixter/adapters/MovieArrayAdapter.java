@@ -1,6 +1,7 @@
 package com.flixter.flixter.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -63,12 +64,19 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         //clear out image from imageview
         viewHolder.image.setImageResource(0);
 
-
         //populate data
         viewHolder.title.setText(movie.getOriginalTitle());
         viewHolder.overview.setText(movie.getOverview());
 
-        Picasso.with(getContext()).load(movie.getPosterPath()).into(viewHolder.image);
+        String path;
+        int orientation = getContext().getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            path = movie.getPosterPath();
+        } else {
+            path = movie.getBackdropPath();
+        }
+
+        Picasso.with(getContext()).load(path).into(viewHolder.image);
 
         //return view
         return convertView;
