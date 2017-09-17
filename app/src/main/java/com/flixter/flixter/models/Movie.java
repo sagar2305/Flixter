@@ -28,16 +28,22 @@ public class Movie {
         return overview;
     }
 
-    String posterPath;
-    String backdropPath;
-    String originalTitle;
-    String overview;
+    public boolean isPopular() {
+        return rating > 5;
+    }
 
-    public Movie(JSONObject jsonObject) throws JSONException {
+    private String posterPath;
+    private String backdropPath;
+    private String originalTitle;
+    private String overview;
+    private double rating;
+
+    private Movie(JSONObject jsonObject) throws JSONException {
         posterPath = jsonObject.getString("poster_path");
         originalTitle = jsonObject.getString("original_title");
         overview = jsonObject.getString("overview");
         backdropPath = jsonObject.getString("backdrop_path");
+        rating = jsonObject.getDouble("vote_average");
     }
 
     public static ArrayList<Movie> fromJSONArray(JSONArray array) {
