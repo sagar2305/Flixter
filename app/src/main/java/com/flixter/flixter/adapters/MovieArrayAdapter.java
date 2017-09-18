@@ -17,6 +17,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 /**
@@ -29,14 +31,22 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
     private static final int TYPE_2 = 1;
 
     // View lookup cache
-    private static class ViewHolderRegularMovie {
-        ImageView image;
-        TextView title;
-        TextView overview;
+    public static class ViewHolderRegularMovie {
+        @BindView(R.id.ivMovieImage) ImageView image;
+        @BindView(R.id.tvTitle) TextView title;
+        @BindView(R.id.tvOverview) TextView overview;
+
+        public ViewHolderRegularMovie(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 
-    private static class ViewHolderPopularMovie {
-        ImageView image;
+    public static class ViewHolderPopularMovie {
+        @BindView(R.id.ivMovieImage) ImageView image;
+
+        public ViewHolderPopularMovie(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 
 
@@ -58,14 +68,9 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
                 ViewHolderRegularMovie viewHolder; // view lookup cache stored in tag
                 if (convertView == null) {
                     // If there's no view to re-use, inflate a brand new view for row
-                    viewHolder = new ViewHolderRegularMovie();
                     LayoutInflater inflater = LayoutInflater.from(getContext());
                     convertView = inflater.inflate(R.layout.item_movie, parent, false);
-
-                    viewHolder.image = convertView.findViewById(R.id.ivMovieImage);
-                    viewHolder.title = convertView.findViewById(R.id.tvTitle);
-                    viewHolder.overview = convertView.findViewById(R.id.tvOverview);
-
+                    viewHolder = new ViewHolderRegularMovie(convertView);
                     // Cache the viewHolder object inside the fresh view
                     convertView.setTag(viewHolder);
                 } else {
@@ -106,12 +111,9 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
                 ViewHolderPopularMovie viewHolderPopularMovie; // view lookup cache stored in tag
                 if (convertView == null) {
                     // If there's no view to re-use, inflate a brand new view for row
-                    viewHolderPopularMovie = new ViewHolderPopularMovie();
                     LayoutInflater inflater = LayoutInflater.from(getContext());
                     convertView = inflater.inflate(R.layout.item_movie_popular, parent, false);
-
-                    viewHolderPopularMovie.image = convertView.findViewById(R.id.ivMovieImage);
-
+                    viewHolderPopularMovie = new ViewHolderPopularMovie(convertView);
                     // Cache the viewHolder object inside the fresh view
                     convertView.setTag(viewHolderPopularMovie);
                 } else {
