@@ -38,9 +38,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://i.imgur.com/mwzgJBZ.gif' title='Video Walkthrough Portrait' width='' alt='Video Walkthrough Portrait' />
+<img src='https://i.imgur.com/cr48Crb.gif' title='Video Walkthrough Portrait' width='' alt='Video Walkthrough Portrait' />
 
-<img src='https://i.imgur.com/VdBXeAc.gif' title='Video Walkthrough Landscape' width='' alt='Video Walkthrough Landscape' />
+<img src='https://i.imgur.com/NvzRP0L.gif' title='Video Walkthrough Landscape' width='' alt='Video Walkthrough Landscape' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
